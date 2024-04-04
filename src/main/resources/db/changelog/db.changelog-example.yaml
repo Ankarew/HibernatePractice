@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: changed
+      author: me:)
+      changes:
+        - createTable:
+            remarks: "Test base late at night"
+            schemaName: schema_one
+            tableName: table_one
+            columns:
+              - column:
+                  remarks: "Stores id's"
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  remarks: "Item name"
+                  name: name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: "Short description"
+                  name: description
+                  type: varchar
+                  constraints:
+                    nullable: false
