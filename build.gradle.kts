@@ -17,6 +17,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc:3.2.3")
     implementation("org.liquibase:liquibase-core:4.26.0")
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.3")
+    implementation("org.hibernate:hibernate-core:6.5.0.CR1")
+
 }
 
 tasks.test {
