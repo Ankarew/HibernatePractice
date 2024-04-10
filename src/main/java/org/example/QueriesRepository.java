@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.mappers.PersonRowMapper;
 import org.example.mappers.SalesRowMapper;
+import org.example.models.Person;
+import org.example.models.Sales;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

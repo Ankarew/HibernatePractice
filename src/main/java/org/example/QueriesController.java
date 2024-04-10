@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.models.Person;
+import org.example.models.Sales;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

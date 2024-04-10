@@ -1,5 +1,5 @@
 package org.example.mappers;
-import org.example.Person;
+import org.example.models.Person;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

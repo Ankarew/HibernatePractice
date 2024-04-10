@@ -1,6 +1,6 @@
 package org.example.mappers;
 
-import org.example.Sales;
+import org.example.models.Sales;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
