@@ -1,9 +1,6 @@
 package org.example.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -18,6 +15,13 @@ public class Sales {
     private UUID productId;
     private Integer quantity;
     private Timestamp timestamp;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private Person person;
+    @ManyToOne(fetch =  FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
 
     public Sales(UUID id, UUID personId, UUID productId, Integer quantity, Timestamp timestamp) {

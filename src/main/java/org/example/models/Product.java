@@ -1,10 +1,9 @@
 package org.example.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -18,6 +17,21 @@ public class Product {
     private Double price;
     @Column (name = "in_storage")
     private Integer inStorage;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Sales> sales;
+
+    public Product(UUID id, String name, String description, String type, Double price, Integer inStorage) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.price = price;
+        this.inStorage = inStorage;
+        this.sales = new ArrayList<>();
+    }
+
+    public Product() {
+    }
 
     public UUID getId() {
         return id;
