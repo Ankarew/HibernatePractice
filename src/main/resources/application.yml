@@ -8,6 +8,11 @@ spring:
     username: postgres
     password: pfvpfg,en072000
     driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+        show_sql: true
 
 liquibase:
     change-log: "classpath:db/changelog/db.changelog-master.yaml"
