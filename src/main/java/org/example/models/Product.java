@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table (name = "product")
+@Table (name = "product", schema = "new_schema")
 public class Product {
     @Id
     private UUID id;
@@ -17,8 +17,7 @@ public class Product {
     private Double price;
     @Column (name = "in_storage")
     private Integer inStorage;
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Sales> sales;
+
 
     public Product(UUID id, String name, String description, String type, Double price, Integer inStorage) {
         this.id = id;
@@ -27,7 +26,7 @@ public class Product {
         this.type = type;
         this.price = price;
         this.inStorage = inStorage;
-        this.sales = new ArrayList<>();
+
     }
 
     public Product() {

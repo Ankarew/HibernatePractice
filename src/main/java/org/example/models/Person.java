@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table (name = "person")
+@Table (name = "person", schema = "new_schema")
 public class Person {
      @Id
      @Column (name = "id")
@@ -20,8 +20,8 @@ public class Person {
      private String position;
      private Date birthdate;
 
-     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-     private List<Sales> salesList;
+     /*@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+     private List<Sales> salesList;*/
 
     public Person(UUID id, String firstName, String lastName, String position, Date birthdate) {
         this.id = id;
@@ -29,7 +29,7 @@ public class Person {
         this.lastName = lastName;
         this.position = position;
         this.birthdate = birthdate;
-        salesList = new ArrayList<>();
+        //salesList = new ArrayList<>();
     }
 
     public Person() {
@@ -75,18 +75,17 @@ public class Person {
         this.birthdate = birthdate;
     }
 
-    public List<Sales> getSalesList() {
+    /*public List<Sales> getSalesList() {
         return salesList;
     }
 
     public void setSalesList(List<Sales> salesList) {
         this.salesList = salesList;
-    }
+    }*/
 
     @Override
     public String toString() {
         return "Person{" +
-                "salesList=" + salesList +
                 ", birthdate=" + birthdate +
                 ", position='" + position + '\'' +
                 ", lastName='" + lastName + '\'' +

@@ -3,9 +3,11 @@ package org.example.models;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.UUID;
+
 @Entity
-@Table (name = "sales")
+@Table (name = "sales", schema = "new_schema")
 public class Sales {
     @Id
     private UUID id;
@@ -14,14 +16,14 @@ public class Sales {
     @Column (name = "product_id")
     private UUID productId;
     private Integer quantity;
-    private Timestamp timestamp;
+    private Instant timestamp = Instant.now();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
-    private Person person;
-    @ManyToOne(fetch =  FetchType.LAZY)
+    private Person person;*/
+    /*@ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "product_id")
-    private Product product;
+    private Product product;*/
 
 
     public Sales(UUID id, UUID personId, UUID productId, Integer quantity, Timestamp timestamp) {
@@ -29,7 +31,6 @@ public class Sales {
         this.personId = personId;
         this.productId = productId;
         this.quantity = quantity;
-        this.timestamp = timestamp;
     }
 
     public Sales() {
@@ -67,11 +68,11 @@ public class Sales {
         this.productId = productId;
     }
 
-    public Timestamp getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }
 

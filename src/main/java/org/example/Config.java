@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -21,16 +22,20 @@ import java.util.Properties;
 public class Config {
     @Value("${spring.datasource.url}")
     private String url;
+    @Value("${spring.datasource.username}")
     private String username;
+    @Value("${spring.datasource.password}")
     private String password;
+    @Value("${spring.datasource.driver-class-name}")
     private String driverClassName;
-    @Value("${spring.jpa.properties.hibernate.dialect")
+    @Value("${spring.jpa.properties.hibernate.dialect}")
     private String dialect;
-    @Value("${spring.jpa.properties.hibernate.show_sql")
+    @Value("${spring.jpa.properties.hibernate.show_sql}")
     private Boolean showSql;
 
 
-    @Bean
+    /*@Bean
+    @Primary
     public DataSource postgresqlDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(url);
@@ -39,7 +44,7 @@ public class Config {
         dataSource.setPassword(password);
 
         return dataSource;
-    }
+    }*/
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
