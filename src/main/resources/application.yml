@@ -1,7 +1,3 @@
-example:
-  config:
-    one: "test"
-    two: "test 2"
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/new_db
