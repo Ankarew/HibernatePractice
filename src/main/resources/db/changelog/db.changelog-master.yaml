@@ -1,2 +1,16 @@
 databaseChangeLog:
-    - include:
+    - changeSet:
+          id: 1
+          author: Andrey
+          changes:
+              - addDefaultValue:
+                    schemaName: new_schema
+                    tableName: person
+                    columnName: id
+                    defaultValueComputed: gen_random_uuid()
+              - addPrimaryKey:
+                    schemaName: new_schema
+                    tableName: person
+                    columnNames: id
+
+              - addDefaultValue:
