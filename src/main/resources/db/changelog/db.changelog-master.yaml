@@ -2,15 +2,24 @@ databaseChangeLog:
     - changeSet:
           id: 1
           author: Andrey
+          validCheckSum: "9:a48935bc521805e16746f28e50b45c5d"
           changes:
               - addDefaultValue:
                     schemaName: new_schema
                     tableName: person
                     columnName: id
                     defaultValueComputed: gen_random_uuid()
-              - addPrimaryKey:
-                    schemaName: new_schema
-                    tableName: person
-                    columnNames: id
-
+    - changeSet:
+          id: 2
+          author: Andrey
+          changes:
               - addDefaultValue:
+                    schemaName: new_schema
+                    tableName: product
+                    columnName: id
+                    defaultValueComputed: gen_random_uuid()
+              - addDefaultValue:
+                   schemaName: new_schema
+                   tableName: sales
+                   columnName: id
+                   defaultValueComputed: gen_random_uuid()

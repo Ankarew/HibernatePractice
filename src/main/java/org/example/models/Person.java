@@ -11,6 +11,7 @@ import java.util.UUID;
 @Table (name = "person", schema = "new_schema")
 public class Person {
      @Id
+     @GeneratedValue
      @Column (name = "id")
      private UUID id;
      @Column (name = "first_name")

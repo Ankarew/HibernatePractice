@@ -10,6 +10,7 @@ import java.util.UUID;
 @Table (name = "product", schema = "new_schema")
 public class Product {
     @Id
+    @GeneratedValue
     private UUID id;
     private String name;
     private String description;
