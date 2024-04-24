@@ -1,8 +1,8 @@
 package org.example.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -12,27 +12,16 @@ public class Sales {
     @Id
     @GeneratedValue
     private UUID id;
-    @Column (name = "person_id")
-    private UUID personId;
-    @Column (name = "product_id")
-    private UUID productId;
     private Integer quantity;
     private Instant timestamp = Instant.now();
 
-    /*@ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
-    private Person person;*/
-    /*@ManyToOne(fetch =  FetchType.LAZY)
+    private Person person;
+    @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "product_id")
-    private Product product;*/
+    private Product product;
 
-
-    public Sales(UUID id, UUID personId, UUID productId, Integer quantity, Timestamp timestamp) {
-        this.id = id;
-        this.personId = personId;
-        this.productId = productId;
-        this.quantity = quantity;
-    }
 
     public Sales() {
     }
@@ -45,13 +34,6 @@ public class Sales {
         this.id = id;
     }
 
-    public UUID getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(UUID personId) {
-        this.personId = personId;
-    }
 
     public Integer getQuantity() {
         return quantity;
@@ -61,14 +43,6 @@ public class Sales {
         this.quantity = quantity;
     }
 
-    public UUID getProductId() {
-        return productId;
-    }
-
-    public void setProductId(UUID productId) {
-        this.productId = productId;
-    }
-
     public Instant getTimestamp() {
         return timestamp;
     }
@@ -76,15 +50,37 @@ public class Sales {
     public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }
+    @JsonIgnore
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+    @JsonIgnore
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     @Override
     public String toString() {
         return "Sales{" +
                 "id=" + id +
-                ", personId=" + personId +
-                ", productId=" + productId +
                 ", quantity=" + quantity +
                 ", timestamp=" + timestamp +
+                ", person=" + person +
+                ", product=" + product +
                 '}';
+    }
+    public UUID getPersonId() {
+        return person.getId();
+    }
+    public UUID setPersonId(UUID personId) {
+        return person.getId();
     }
 }

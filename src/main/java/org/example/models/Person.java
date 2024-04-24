@@ -21,8 +21,8 @@ public class Person {
      private String position;
      private Date birthdate;
 
-     /*@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-     private List<Sales> salesList;*/
+     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+     private List<Sales> salesList;
 
     public Person(UUID id, String firstName, String lastName, String position, Date birthdate) {
         this.id = id;
@@ -87,11 +87,11 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                ", birthdate=" + birthdate +
-                ", position='" + position + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+                ", birthdate=" + birthdate +
                 '}';
     }
 }

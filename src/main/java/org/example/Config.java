@@ -1,5 +1,6 @@
 package org.example;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -65,6 +66,7 @@ public class Config {
 
         return emf;
     }
+
 
     /*@Bean
     public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
