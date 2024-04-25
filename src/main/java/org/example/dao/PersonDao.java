@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.example.models.Person;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +15,11 @@ public class PersonDao {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    public PersonDao(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     //Read
     public List<Person> getAll() {
         return entityManager.createQuery("from Person",

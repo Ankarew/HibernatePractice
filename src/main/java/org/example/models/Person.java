@@ -14,11 +14,15 @@ public class Person {
      @GeneratedValue
      @Column (name = "id")
      private UUID id;
+
      @Column (name = "first_name")
      private String firstName;
+
      @Column (name = "last_name")
      private String lastName;
+
      private String position;
+
      private Date birthdate;
 
      @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)

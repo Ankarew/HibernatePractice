@@ -21,6 +21,10 @@ public class ProductDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    public ProductDao(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     //Read
     public List<Product> getAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();

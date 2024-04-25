@@ -35,7 +35,7 @@ public class Config {
     private Boolean showSql;
 
 
-    /*@Bean
+    @Bean
     @Primary
     public DataSource postgresqlDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -45,7 +45,7 @@ public class Config {
         dataSource.setPassword(password);
 
         return dataSource;
-    }*/
+    }
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
