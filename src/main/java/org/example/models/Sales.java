@@ -2,6 +2,7 @@ package org.example.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -12,12 +13,14 @@ public class Sales {
     @Id
     @GeneratedValue
     private UUID id;
+    @Positive
     private Integer quantity;
     private Instant timestamp = Instant.now();
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private Person person;
+
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;

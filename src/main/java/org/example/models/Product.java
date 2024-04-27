@@ -1,6 +1,9 @@
 package org.example.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +15,15 @@ public class Product {
     @Id
     @GeneratedValue
     private UUID id;
+    @NotNull
     private String name;
+
     private String description;
     private String type;
+    @Positive
     private Double price;
+
+    @PositiveOrZero
     @Column (name = "in_storage")
     private Integer inStorage;
 

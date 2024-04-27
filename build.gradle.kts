@@ -19,6 +19,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.3")
     implementation("org.hibernate:hibernate-core:6.5.0.CR1")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.2.4")
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+    implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator-annotation-processor
+    implementation("org.hibernate.validator:hibernate-validator-annotation-processor:8.0.1.Final")
+
 }
 
 tasks.test {

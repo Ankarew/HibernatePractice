@@ -1,6 +1,7 @@
 package org.example.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -15,14 +16,22 @@ public class Person {
      @Column (name = "id")
      private UUID id;
 
+     @NotNull
      @Column (name = "first_name")
+     @Size(min = 3, max = 20, message = "minimum first name " +
+             "length is 3, maximum 20")
      private String firstName;
 
+     @NotNull
      @Column (name = "last_name")
+     @Size(min = 3, max = 20, message = "minimum last name " +
+             "length is 3, maximum 20")
      private String lastName;
 
+     @NotNull
      private String position;
 
+     @PastOrPresent
      private Date birthdate;
 
      @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
