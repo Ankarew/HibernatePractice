@@ -11,10 +11,12 @@ import java.util.UUID;
 @Table (name = "sales", schema = "new_schema")
 public class Sales {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Positive
     private Integer quantity;
+
     private Instant timestamp = Instant.now();
 
     @ManyToOne(cascade = CascadeType.ALL)

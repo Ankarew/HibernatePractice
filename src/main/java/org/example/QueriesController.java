@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.dao.PersonDao;
+import org.example.dto.PersonDto;
 import org.example.models.Person;
 import org.example.models.Sales;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +13,11 @@ import java.util.UUID;
 public class QueriesController {
 
     private final QueriesRepository queriesRepository;
+    private PersonDao personDao;
 
-    public QueriesController (QueriesRepository queriesRepository) {
+    public QueriesController (QueriesRepository queriesRepository, PersonDao personDao) {
         this.queriesRepository = queriesRepository;
+        this.personDao = personDao;
     }
 
     @GetMapping("/sales")
@@ -68,21 +72,23 @@ public class QueriesController {
     public String deleteSale(@RequestParam("id") UUID id, @RequestParam("isPersonId") Boolean isPersonId) {
         if (isPersonId) {
             queriesRepository.deleteSalesByPersonId(id);
-            return "Удалёна запись по personId";
+            return "Deleted by personId";
         }
         queriesRepository.deleteSalesById(id);
-        return "Удалена запись по id";
+        return "deleted by id";
     }
+
     @DeleteMapping("/person/delete")
     public String deletePerson(@RequestBody Person person){
         if (person.getId() == UUID.fromString("00000000-0000-0000-0000-000000000000") && person.getFirstName().isEmpty()
                 && person.getLastName().isEmpty()) {
-            return "Тело запроса пустое";
+            return "Empty body";
         } else {
             queriesRepository.deletePerson(person);
-            return "записи удалены";
+            return "Deleted";
         }
     }
+
     @GetMapping("/person/search-{id}")
     public Person searchPerson(@PathVariable("id") UUID id) {
         return queriesRepository.searchPerson(id);
@@ -106,5 +112,30 @@ public class QueriesController {
     @GetMapping("/sales/search/quantity-greater")
     public List<Sales> searchSaleQuantity(@RequestParam("quantity") Integer quantity) {
         return queriesRepository.searchSaleQuantity(quantity);
+    }
+
+    @GetMapping("/hibernate/person/all")
+    public List<Person> getAllPerson() {
+        return personDao.getAll();
+    }
+
+    @GetMapping("/hibernate/person/get")
+    public Person getPersonById(@RequestParam("id") UUID uuid) {
+        return personDao.getById(uuid);
+    }
+
+    @PostMapping("/hibernate/person/")
+    public Person addPerson(@RequestBody Person person) {
+        return personDao.create(person);
+    }
+
+    @PutMapping("/hibernate/person/")
+    public String updatePerson(@RequestBody PersonDto personDto) {
+        return personDao.update(personDto);
+    }
+
+    @DeleteMapping("/hibernate/person/")
+    public String deletePerson(@RequestParam("id") UUID uuid) {
+        return personDao.delete(uuid);
     }
 }

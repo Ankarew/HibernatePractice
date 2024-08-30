@@ -6,9 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
 import jakarta.transaction.Transactional;
-import org.example.models.Person;
 import org.example.models.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -58,9 +56,8 @@ public class ProductDao {
         if (getById(product.getId()) != null) {
             cu.set("name", product.getName());
             cu.set("description", product.getDescription());
-            cu.set("type", product.getType());
             cu.set("price", product.getPrice());
-            cu.set("in_storage", product.getInStorage());
+            cu.set("in_storage", product.getStock());
         }
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();

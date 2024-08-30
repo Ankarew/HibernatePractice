@@ -23,6 +23,9 @@ dependencies {
     implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
     // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator-annotation-processor
     implementation("org.hibernate.validator:hibernate-validator-annotation-processor:8.0.1.Final")
+    implementation("org.mapstruct:mapstruct:1.6.0")
+    implementation("org.mapstruct:mapstruct-processor:1.6.0")
+    annotationProcessor ("org.mapstruct:mapstruct-processor:1.6.0")
 
 }
 

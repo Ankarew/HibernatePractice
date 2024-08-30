@@ -2,7 +2,6 @@ databaseChangeLog:
     - changeSet:
           id: 1
           author: Andrey
-          validCheckSum: "9:a48935bc521805e16746f28e50b45c5d"
           changes:
               - addDefaultValue:
                     schemaName: new_schema
@@ -14,12 +13,58 @@ databaseChangeLog:
           author: Andrey
           changes:
               - addDefaultValue:
-                    schemaName: new_schema
-                    tableName: product
-                    columnName: id
-                    defaultValueComputed: gen_random_uuid()
-              - addDefaultValue:
                    schemaName: new_schema
                    tableName: sales
                    columnName: id
                    defaultValueComputed: gen_random_uuid()
+    - changeSet:
+        id: 3
+        author: Andrey
+        comment: adding new table product, editing existing tables person and sales with new columns
+        changes:
+          - createTable:
+              tableName: product
+              schemaName: new_schema
+              columns:
+                - column:
+                    name: id
+                    type: UUID
+                    defaultValueComputed: gen_random_uuid()
+                    constraints:
+                      primaryKey: true
+                      primaryKeyName: pk_product
+                - column:
+                    name: name
+                    type: char
+                - column:
+                    name: description
+                    type: varchar
+                - column:
+                    name: price
+                    type: double
+                - column:
+                    name: stock
+                    type: integer
+          - addColumn:
+              schemaName: new_schema
+              tableName: person
+              columns:
+                - column:
+                    name: position
+                    type: char
+                - column:
+                    name: birthdate
+                    type: date
+          - addColumn:
+              tableName: sales
+              schemaName: new_schema
+              columns:
+                - column:
+                    name: timestamp
+                    type: timestamp
+                - column:
+                    name: product_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_product
+                      references: new_schema.product(id)

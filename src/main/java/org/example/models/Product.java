@@ -5,36 +5,33 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table (name = "product", schema = "new_schema")
 public class Product {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @NotNull
     private String name;
 
     private String description;
-    private String type;
+
     @Positive
     private Double price;
 
     @PositiveOrZero
-    @Column (name = "in_storage")
-    private Integer inStorage;
+    private Integer stock;
 
 
-    public Product(UUID id, String name, String description, String type, Double price, Integer inStorage) {
+    public Product(UUID id, String name, String description, Double price, Integer stock) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.type = type;
         this.price = price;
-        this.inStorage = inStorage;
+        this.stock = stock;
 
     }
 
@@ -65,14 +62,6 @@ public class Product {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -81,12 +70,12 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getInStorage() {
-        return inStorage;
+    public Integer getStock() {
+        return stock;
     }
 
-    public void setInStorage(Integer inStorage) {
-        this.inStorage = inStorage;
+    public void setStock(Integer inStorage) {
+        this.stock = inStorage;
     }
 
     @Override
@@ -95,9 +84,8 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
                 ", price=" + price +
-                ", inStorage=" + inStorage +
+                ", inStorage=" + stock +
                 '}';
     }
 }

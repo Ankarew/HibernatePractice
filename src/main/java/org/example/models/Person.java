@@ -12,7 +12,7 @@ import java.util.UUID;
 @Table (name = "person", schema = "new_schema")
 public class Person {
      @Id
-     @GeneratedValue
+     @GeneratedValue(strategy = GenerationType.UUID)
      @Column (name = "id")
      private UUID id;
 
@@ -43,7 +43,7 @@ public class Person {
         this.lastName = lastName;
         this.position = position;
         this.birthdate = birthdate;
-        //salesList = new ArrayList<>();
+        salesList = new ArrayList<>();
     }
 
     public Person() {

@@ -12,12 +12,11 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @SpringBootApplication
 @ConfigurationPropertiesScan
 public class Main {
-    @Autowired
-    ProductDao dao;
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
+
 
 
 }
